@@ -14,3 +14,6 @@
 (use-package ivy
   :ensure t
   :config (ivy-mode 1))
+
+(show-paren-mode 1)
+(setq show-paren-delay 0)
