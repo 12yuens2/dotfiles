@@ -15,6 +15,7 @@
 (depends-on "idle-highlight-mode")
 (depends-on "ivy")
 (depends-on "magit")
+(depends-on "monokai-theme")
 (depends-on "multiple-cursors")
 (depends-on "nyan-mode")
 (depends-on "pallet")
