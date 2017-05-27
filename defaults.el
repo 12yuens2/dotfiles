@@ -15,5 +15,16 @@
   :ensure t
   :config (ivy-mode 1))
 
+(use-package rust-mode
+  :ensure t)
+
+(use-package multi-term
+  :ensure t
+  :init (setq multi-term-program "/bin/bash"))
+
+;(use-package evil-magit
+;  :ensure t
+;  )
+
 (show-paren-mode 1)
 (setq show-paren-delay 0)
