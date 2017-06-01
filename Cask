@@ -3,6 +3,7 @@
 
 (depends-on "bind-key")
 (depends-on "cask")
+(depends-on "company")
 (depends-on "dash")
 (depends-on "drag-stuff")
 (depends-on "evil")

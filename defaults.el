@@ -18,9 +18,10 @@
 (use-package rust-mode
   :ensure t)
 
-(use-package multi-term
+(use-package company
   :ensure t
-  :init (setq multi-term-program "/bin/bash"))
+  :bind (("C-1" . company-mode))
+  :config (global-company-mode 1))
 
 ;(use-package evil-magit
 ;  :ensure t
@@ -28,3 +29,4 @@
 
 (show-paren-mode 1)
 (setq show-paren-delay 0)
+(load-theme 'monokai t)
