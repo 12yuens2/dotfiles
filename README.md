@@ -14,3 +14,5 @@ Personal Emacs config files
 5. `rust-mode` - Rust syntax highlighting
 6. `company` - Text completion
 7. `magit` - Git
+8. `elfeed` - RSS news feed
+9. `org` - Notes and calendar
