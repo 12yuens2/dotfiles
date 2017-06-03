@@ -1,7 +1,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -17,6 +17,7 @@
 (cask-initialize)
 
 (load "~/.emacs.d/defaults.el")
+(load "~/.emacs.d/elfeed-config.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -26,7 +27,9 @@
  '(custom-safe-themes
    (quote
     ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
- '(package-selected-packages (quote (monokai-theme ivy evil use-package))))
+ '(package-selected-packages
+   (quote
+    (elfeed company magit evil-magit multi-term monokai-theme ivy evil use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

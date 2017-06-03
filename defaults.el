@@ -20,13 +20,19 @@
 
 (use-package company
   :ensure t
-  :bind (("C-1" . company-mode))
+  :bind ("C-1" . company-mode)
   :config (global-company-mode 1))
 
-;(use-package evil-magit
-;  :ensure t
-;  )
+(use-package org
+  :ensure t)
+
+(use-package elfeed
+  :ensure t
+  :bind ("C-x w" . elfeed))
+
+(use-package evil-magit
+  :ensure t)
 
 (show-paren-mode 1)
 (setq show-paren-delay 0)
-(load-theme 'monokai t)
+(load-theme 'leuven t)
