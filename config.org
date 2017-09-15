@@ -1,0 +1,107 @@
+#+TITLE: Emacs config
+
+* Org mode
+Organisation for all of Emacs and life. This section contains all org mode configurations and management.
+
+** Install
+
+#+BEGIN_SRC emacs-lisp
+(use-package org
+    :ensure t)
+#+END_SRC
+
+* ELPA packages
+All general ELPA packages used that are not in the default Emacs configuration.
+
+** Cask
+Project management for smooth packaging.
+
+#+BEGIN_SRC emacs-lisp
+(use-package cask)
+#+END_SRC
+
+** Company
+Text completion for code, like in an IDE.
+
+#+BEGIN_SRC emacs-lisp
+(use-package company
+    :ensure t
+    :bind ("C-1" . company-mode)
+    :config (global-company-mode 1))
+#+END_SRC
+
+** Elfeed
+Web feed reader.
+
+#+BEGIN_SRC emacs-lisp
+(use-package elfeed
+    :ensure t
+    :bind ("C-x w" . elfeed))
+#+END_SRC
+
+** Evil
+Vim in Emacs!
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil
+    :ensure t
+    :config (evil-mode 1))
+#+END_SRC
+
+** Ivy
+Completion mechanism for Emacs.
+
+#+BEGIN_SRC emacs-lisp
+(use-package ivy
+    :ensure t
+    :config (ivy-mode 1))
+#+END_SRC
+
+** Linum
+Line numbers. Everyone needs line numbers.
+
+#+BEGIN_SRC emacs-lisp
+(use-package linum
+    :ensure t
+    :init (setq linum-format "%d ")
+    :config (global-linum-mode 1))
+#+END_SRC
+
+** Pallet
+Package management with Cask
+
+#+BEGIN_SRC emacs-lisp
+(use-package pallet
+    :ensure t
+    :config (pallet-mode 1))
+#+END_SRC
+
+* General configurations
+General configurations not related to other packages.
+
+** Text
+Configurations related to text display.
+
+*** Line wrap
+
+#+BEGIN_SRC emacs-lisp
+(setq global-visual-line-mode 1)
+#+END_SRC
+
+*** Parenthesises
+Settings for parenthesis highlighting.
+
+#+BEGIN_SRC emacs-lisp
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+#+END_SRC
+
+** QoL
+Quality of life improvements.
+
+*** Yes/No
+Change "yes or no" to "y or n"
+
+#+BEGIN_SRC emacs-lisp
+(fset 'yes-or-no-p 'y-or-n p)
+#+END_SRc

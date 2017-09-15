@@ -1,9 +1,18 @@
+
+;; Init package
 (require 'package)
 (setq package-enable-at-startup nil)
 
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
+			 ("melpa" . "https://melpa.org.packages/")
+			 ("marmalade" . "https://marmalade-repo.org/packages/")
+			 ("gnu" . "https://elpa.gnu.org/packages/")
+			 ("popkit" . "http://elpa.popkit.org/packages") ;; For Chinese firewall
+			 ("org" . "http://orgmode.org/elpa")))
 (package-initialize)
 
+
+;; Init use-package if not installed
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -16,23 +25,7 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
-(load "~/.emacs.d/defaults.el")
-(load "~/.emacs.d/elfeed-config.el")
+;; Load org config
+(org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
- '(package-selected-packages
-   (quote
-    (elfeed company magit evil-magit multi-term monokai-theme ivy evil use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(load-theme 'leuven t)
