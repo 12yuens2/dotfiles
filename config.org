@@ -135,15 +135,15 @@ Settings for parenthesis highlighting.
 #+END_SRC
 
 *** Spell checking
-On the fly spell checking with aspell. ([[http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html]])
-
+On the fly spell checking with aspell.
+ 
 #+BEGIN_SRC emacs-lisp
 (setq ispell-program-name "/usr/local/bin/hunspell")
 (setq ispell-local-dictionary "en_GB")
 (setq ispell-local-dictionary-alist
     '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8)))
 
-(add-to-list 'ispell-hunspell-dict-paths-alist '("en_GB" . "~/Library/Spelling/en_GB.aff"))
+(setq ispell-hunspell-dict-paths-alist '("en_GB" . "~/Library/Spelling/en_GB.aff"))
 #+END_SRC
 
 ** QoL
