@@ -16,8 +16,8 @@ Change navigation bindings for evil movement.
 #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook
     (lambda ()
+        (local-set-key (kbd "C-c k") 'outline-previous-heading)
         (local-set-key (kbd "C-c j") 'outline-next-heading)))
-(global-set-key (kbd "C-c k") 'outline-previous-heading)
 #+END_SRC
 
 ** Templates
