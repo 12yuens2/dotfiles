@@ -1,0 +1,11 @@
+* Org-mode
+Org-mode files are structures like LateX files with headings and subheadings. We use a * to indicate a heading.
+
+** Subheading
+Multiple ** creates subheadings and further.
+
+*** Here's a sub-subheading
+Created with ***
+
+** Navigation
+Each heading can be minimised and expanded by hovering on the heading and pressing TAB. Shift-TAB closes and expands all headings in the document. Use C-c C-j and C-c C-k (Defaults in Org are C-c C-n and C-c C-p but I've changed the bindings) to jump forward and backwards along the headings.

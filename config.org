@@ -1,13 +1,31 @@
-#+TITLE: Emacs config
+#+Title: Emacs config
 
 * Org mode
-Organisation for all of Emacs and life. This section contains all org mode configurations and management.
+Organisation for all of Emacs and life. This section contains all org mode configurations and management. Have a look at [[~/.emacs.d/orguide.org][guide]] for notes on how to use Org.
 
 ** Install
 
 #+BEGIN_SRC emacs-lisp
 (use-package org
     :ensure t)
+#+END_SRC
+
+** Navigation
+Change navigation bindings for evil movement.
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook
+    (lambda ()
+        (local-set-key (kbd "C-c j") 'outline-next-heading)))
+(global-set-key (kbd "C-c k") 'outline-previous-heading)
+#+END_SRC
+
+** Templates
+
+#+BEGIN_SRC emacs-lisp
+(setq org-structure-template-alist
+    '(("s" "#+BEGIN_SRC ?\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>")
+      ("el" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC" "<src lang=\"emacs-lisp\">\n?\n</src>")))
 #+END_SRC
 
 * ELPA packages
@@ -17,7 +35,8 @@ All general ELPA packages used that are not in the default Emacs configuration.
 Project management for smooth packaging.
 
 #+BEGIN_SRC emacs-lisp
-(use-package cask)
+(use-package cask
+    :ensure t)
 #+END_SRC
 
 ** Company
@@ -39,14 +58,28 @@ Web feed reader.
     :bind ("C-x w" . elfeed))
 #+END_SRC
 
+*** Elfeed-org
+[[https://github.com/remyhonig/elfeed-org][elfeed-org]] allows configuration of Elfeed with an Org file.
+
+#+BEGIN_SRC emacs-lisp
+(use-package elfeed-org
+    :ensure t
+    :config (elfeed-org)
+            (setq rmh-elfeed-org-files (list "/.emacs.d/elfeed.org")))
+#+END_SRC emacs-lisp
+
+*** Elfeed configuration
+
+
 ** Evil
-Vim in Emacs!
+Vim bindings in Emacs.
 
 #+BEGIN_SRC emacs-lisp
 (use-package evil
     :ensure t
     :config (evil-mode 1))
 #+END_SRC
+
 
 ** Ivy
 Completion mechanism for Emacs.
@@ -77,7 +110,12 @@ Package management with Cask
 #+END_SRC
 
 * General configurations
-General configurations not related to other packages.
+** Environment variables
+
+#+BEGIN_SRC emacs-lisp
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+#+END_SRC
 
 ** Text
 Configurations related to text display.
@@ -96,6 +134,18 @@ Settings for parenthesis highlighting.
 (setq show-paren-delay 0)
 #+END_SRC
 
+*** Spell checking
+On the fly spell checking with aspell. ([[http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html]])
+
+#+BEGIN_SRC emacs-lisp
+(setq ispell-program-name "/usr/local/bin/hunspell")
+(setq ispell-local-dictionary "en_GB")
+(setq ispell-local-dictionary-alist
+    '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8)))
+
+(add-to-list 'ispell-hunspell-dict-paths-alist '("en_GB" . "~/Library/Spelling/en_GB.aff"))
+#+END_SRC
+
 ** QoL
 Quality of life improvements.
 
@@ -103,5 +153,17 @@ Quality of life improvements.
 Change "yes or no" to "y or n"
 
 #+BEGIN_SRC emacs-lisp
-(fset 'yes-or-no-p 'y-or-n p)
+(fset 'yes-or-no-p 'y-or-n-p)
 #+END_SRc
+
+*** Clock
+
+#+BEGIN_SRC emacs-lisp
+(display-time-mode 1)
+#+END_SRC
+
+** Theme
+
+#+BEGIN_SRC emacs-lisp
+(load-theme 'leuven t)
+#+END_SRC
