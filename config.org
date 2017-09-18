@@ -1,7 +1,7 @@
 #+Title: Emacs config
 
 * Org mode
-Organisation for all of Emacs and life. This section contains all org mode configurations and management. Have a look at [[~/.emacs.d/orguide.org][guide]] for notes on how to use Org.
+Organisation for all of Emacs and life. This section contains all org mode configurations and management. Have a look at [[~/.emacs.d/orguide.org][guide]] for notes on how to use Org. 
 
 ** Install
 
@@ -22,9 +22,13 @@ Change navigation bindings for evil movement.
 
 ** Templates
 
+Templates shortcuts for inserting source fragments in Org documents.
 #+BEGIN_SRC emacs-lisp
 (setq org-structure-template-alist
     '(("s" "#+BEGIN_SRC ?\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>")
+      ("e" "#+BEGIN_EXAMPLE\n?\n#+END_EXAMPLE" "<example>\n?\n</example>")
+      ("q" "#+BEGIN_QUOTE\n?\n#+END_QUOTE" "<quote>\n?\n</quote>")
+      ("l" "#+LATEX: " "<literal style=\"latex\">?</literal>")
       ("el" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC" "<src lang=\"emacs-lisp\">\n?\n</src>")))
 #+END_SRC
 
@@ -70,7 +74,6 @@ Web feed reader.
 
 *** Elfeed configuration
 
-
 ** Evil
 Vim bindings in Emacs.
 
@@ -79,7 +82,6 @@ Vim bindings in Emacs.
     :ensure t
     :config (evil-mode 1))
 #+END_SRC
-
 
 ** Ivy
 Completion mechanism for Emacs.
@@ -98,6 +100,21 @@ Line numbers. Everyone needs line numbers.
     :ensure t
     :init (setq linum-format "%d ")
     :config (global-linum-mode 1))
+#+END_SRC
+
+** Neotree
+Tree plugin like NerdTree for Vim.
+
+#+BEGIN_SRC emacs-lisp
+(use-package neotree
+    :ensure t
+    :config 
+        (global-set-key (kbd "C-c f") 'neotree-toggle)
+
+        (add-hook 'neotree-mode-hook
+            (lambda ()
+                (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+                (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
 #+END_SRC
 
 ** Pallet
@@ -144,6 +161,7 @@ On the fly spell checking with aspell.
     '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8)))
 
 (setq ispell-hunspell-dict-paths-alist '("en_GB" . "~/Library/Spelling/en_GB.aff"))
+
 #+END_SRC
 
 ** QoL
@@ -167,3 +185,5 @@ Change "yes or no" to "y or n"
 #+BEGIN_SRC emacs-lisp
 (load-theme 'leuven t)
 #+END_SRC
+* TODO
+- [ ] Template for SH meetings
