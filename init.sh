@@ -7,9 +7,9 @@ if ! type cask > /dev/null; then
     cd ~/.emacs.d/ && cask install
 fi
 
-ln -sF $(pwd)/Cask ~/.emacs.d/Cask
-ln -sF $(pwd)/init.el ~/.emacs.d/init.el
-ln -sF $(pwd)/config.org ~/.emacs.d/config.org
-ln -sF $(pwd)/elfeed.org ~/.emacs.d/elfeed.org
-ln -sF $(pwd)/orguide.org ~/.emacs.d/orguide.org
+ln -sf $(pwd)/Cask ~/.emacs.d/Cask
+ln -sf $(pwd)/init.el ~/.emacs.d/init.el
+ln -sf $(pwd)/config.org ~/.emacs.d/config.org
+ln -sf $(pwd)/elfeed.org ~/.emacs.d/elfeed.org
+ln -sf $(pwd)/orguide.org ~/.emacs.d/orguide.org
 
