@@ -1,7 +1,7 @@
 #+Title: Emacs config
 
 * Org mode
-Organisation for all of Emacs and life. This section contains all org mode configurations and management. Have a look at [[~/.emacs.d/orguide.org][guide]] for notes on how to use Org. 
+Organisation for all of Emacs and life. This section contains all org mode configurations and management. Have a look at [[~/.emacs.d/orguide.org][guide]] for notes and reminder on how to use Org. 
 
 ** Install
 
@@ -69,7 +69,7 @@ Web feed reader.
 (use-package elfeed-org
     :ensure t
     :config (elfeed-org)
-            (setq rmh-elfeed-org-files (list "/.emacs.d/elfeed.org")))
+            (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
 #+END_SRC emacs-lisp
 
 *** Elfeed configuration
