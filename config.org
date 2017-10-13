@@ -29,6 +29,7 @@ Templates shortcuts for inserting source fragments in Org documents.
       ("e" "#+BEGIN_EXAMPLE\n?\n#+END_EXAMPLE" "<example>\n?\n</example>")
       ("q" "#+BEGIN_QUOTE\n?\n#+END_QUOTE" "<quote>\n?\n</quote>")
       ("l" "#+LATEX: " "<literal style=\"latex\">?</literal>")
+      ("n" "#+LATEX:\\n" "<literal style=\"latex\">\\n</literal>")
       ("el" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC" "<src lang=\"emacs-lisp\">\n?\n</src>")))
 #+END_SRC
 
@@ -129,11 +130,6 @@ Package management with Cask
 * General configurations
 ** Environment variables
 
-#+BEGIN_SRC emacs-lisp
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-(setq exec-path (append exec-path '("/usr/local/bin")))
-#+END_SRC
-
 ** Text
 Configurations related to text display.
 
@@ -155,12 +151,10 @@ Settings for parenthesis highlighting.
 On the fly spell checking with aspell.
  
 #+BEGIN_SRC emacs-lisp
-(setq ispell-program-name "/usr/local/bin/hunspell")
+(setq ispell-program-name "/usr/bin/hunspell")
 (setq ispell-local-dictionary "en_GB")
 (setq ispell-local-dictionary-alist
     '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8)))
-
-(setq ispell-hunspell-dict-paths-alist '("en_GB" . "~/Library/Spelling/en_GB.aff"))
 
 #+END_SRC
 
@@ -185,5 +179,10 @@ Change "yes or no" to "y or n"
 #+BEGIN_SRC emacs-lisp
 (load-theme 'leuven t)
 #+END_SRC
-* TODO
-- [ ] Template for SH meetings
+
+* Languages
+** C
+#+BEGIN_SRC emacs-lisp
+(setq-default c-basic-offset 4
+              c-default-style "linux")
+#+END_SRC
