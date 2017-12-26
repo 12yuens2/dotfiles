@@ -7,5 +7,64 @@ Multiple ** creates subheadings and further.
 *** Here's a sub-subheading
 Created with ***
 
+*** Another sub-subheading
+When creating any type of headings ~M-<RET>~ can be used to insert a new heading with the same level as the current heading. This also works for lists. It can also be used in the middle of a line to move the rest of the line to the new heading. 
+
+*** Editing structure
+There are also other commands to edit the structure of the headings. 
+- ~M-S-<RET>~ creates a new TODO entry like below
+  - [ ] New todo item
+  - [ ] ~C-c C-c~ to check or uncheck the box
+- ~M-<left>/<right>~ to move headings levels up and down while selected on a heading.
+- ~M-<up>/<down>~ to move headings up and down the tree structure while selected.
+
+
+** Lists
+*** TODO items
+A TODO item can be created by adding ~TODO~ after a heading, or by the command ~C-c C-t~ while under a heading to make it into a TODO. Entries can be added with ~M-S<RET>~. To mark a TODO item as finished, the command ~C-c C-t~ can be run again. 
+
+~C-c a t~ shows a global todo list.
+
+*** Bullet lists
+- Bullet lists are done simple with - and a space
+- New bullets can be added using ~M-<RET>~
+- ~<TAB>~ Can be used to nest bullets one level deeper
+- The bullet style can be changed with ~S-<left>/<right>~
+
+*** Numbered lists
+1) Similarily numbered lists can be created
+
+
+*** Definition lists
+- definition lists :: use two colons to create a definition
+- Next :: New definitions, like any list items can be added with ~M-<RET>~
+
 ** Navigation
-Each heading can be minimised and expanded by hovering on the heading and pressing TAB. Shift-TAB closes and expands all headings in the document. Use C-c C-j and C-c C-k (Defaults in Org are C-c C-n and C-c C-p but I've changed the bindings) to jump forward and backwards along the headings.
+Each heading can be minimised and expanded by hovering on the heading and pressing TAB. The command is ~org-cycle~. Shift-TAB closes and expands all headings in the document. Use C-c C-j and C-c C-k (Defaults in Org are C-c C-n and C-c C-p but I've changed the bindings) to jump forward and backwards along the headings.
+
+** Formatting
+*** Simple formatting
+Different formatting styles can be applied to text with special characters:
+- /italics/ (enclose with /)
+- *bold* (enclose with *)
+- _underline_ (enclose with _)
+- =literal text= (enclose with =)
+- ~code~ (enclose with ~)
+
+*** Formatted blocks
+There are also many formatted blocks that can be used, like an example block or a source code block.
+
+#+BEGIN_EXAMPLE
+For example, use #+BEGIN_EXAMPLE and #+END_EXAMPLE to create an example block.
+
+The shortcut for this is "<e" followed by [TAB]
+#+END_EXAMPLE
+
+
+#+BEGIN_QUOTE
+We can also have quote blocks with ~#+BEGIN_QUOTE~. The shortcut is "<q" [TAB]
+#+END_QUOTE
+
+
+** Tables
+Now we can add tables in our Org file. These tables can have custom rules for cells and their values, much like in Excel or other spreadsheet software. 
