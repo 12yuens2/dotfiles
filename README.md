@@ -5,3 +5,5 @@ Personal Emacs config files. Notes on all packages and configurations can be fou
 1. Clone repo
 2. Create `.emacs.d` if it doesn't exist
 3. Run `init.sh`
+
+Python is require to install Cask.
