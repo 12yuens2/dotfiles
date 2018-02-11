@@ -28,6 +28,7 @@
 ;; Load org config
 (org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -35,7 +36,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (neotree yasnippet web-mode use-package smex smartparens rust-mode pallet multi-term monokai-theme ivy evil-magit elfeed company))))
+    (enh-ruby-mode autotetris-mode use-package pallet neotree ivy evil elfeed company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

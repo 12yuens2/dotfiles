@@ -74,7 +74,7 @@ Web feed reader.
 #+END_SRC emacs-lisp
 
 *** Elfeed configuration
-
+    
 ** Evil
 Vim bindings in Emacs.
 
@@ -129,7 +129,7 @@ Package management with Cask
 
 * General configurations
 ** Environment variables
-
+   
 ** Text
 Configurations related to text display.
 
@@ -173,16 +173,50 @@ Change "yes or no" to "y or n"
 #+BEGIN_SRC emacs-lisp
 (display-time-mode 1)
 #+END_SRC
-
+    
 ** Theme
 
 #+BEGIN_SRC emacs-lisp
 (load-theme 'leuven t)
 #+END_SRC
 
+* Other custom modes
+Add ~modes/~ directory to load path for custom modes.
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path "~/.emacs.d/modes")
+#+END_SRC
+
+** Promela mode
+Syntax highlighting for PROMELA files. 
+~promela-mode.el~ taken from https://github.com/fixdpt/promela-mode
+
+#+BEGIN_SRC emacs-lisp
+  (require 'promela-mode)
+  (add-to-list 'auto-mode-alist '("\\.pml\\'" . promela-mode))
+#+END_SRC
+
+** Eprime mode
+Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence Prime]]. 
+~eprime-mode.el~ taken from https://gist.github.com/jfdm/1172911/d6b817822d2691192c52aaf05c17f24239464cb3
+
+#+BEGIN_SRC emacs-lisp
+  (require 'eprime-mode)
+  (add-to-list 'auto-mode-alist '("\\.eprime\\'" . eprime-mode))
+#+END_SRC
+
 * Languages
 ** C
 #+BEGIN_SRC emacs-lisp
-(setq-default c-basic-offset 4
-              c-default-style "linux")
+  (setq-default c-basic-offset 4
+                c-default-style "linux")
 #+END_SRC
+
+** Ruby
+#+BEGIN_SRC emacs-lisp
+  (use-package enh-ruby-mode
+    :ensure t
+    :mode
+    ("\\.rb$" . enh-ruby-mode))
+#+END_SRC
+   
