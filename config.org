@@ -130,6 +130,12 @@ Package management with Cask
 * General configurations
 ** Environment variables
    
+** Backups
+Keep backups in a seperate directory to avoid cluttering workspace.
+#+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+#+END_SRC
+
 ** Text
 Configurations related to text display.
 
@@ -220,3 +226,10 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
     ("\\.rb$" . enh-ruby-mode))
 #+END_SRC
    
+** Haskell
+#+BEGIN_SRC emacs-lisp
+  (use-package haskell-mode
+    :ensure t
+    :mode
+    ("\\.hs$" . haskell-mode))
+#+END_SRC
