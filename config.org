@@ -136,6 +136,22 @@ Keep backups in a seperate directory to avoid cluttering workspace.
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 #+END_SRC
 
+** Desktop save
+Enable ~desktop-save~ to save Emacs sessions. The desktop is saved in ~\~/.emacs.d/~. 
+#+BEGIN_SRC emacs-lisp
+  (use-package desktop
+    :ensure t
+    :init
+        (setq desktop-path '("~/.emacs.d/"))
+        (setq desktop-dirname '("~/.emacs.d/"))
+        (setq desktop-base-file-name "emacs-desktop")
+    :config
+        (desktop-save-mode 1)
+        (add-to-list 'desktop-globals-to-save 'register-alist))
+#+END_SRC
+
+*** TODO Multiple desktops in the future
+
 ** Text
 Configurations related to text display.
 
