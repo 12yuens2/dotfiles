@@ -26,7 +26,7 @@
     "such" "that"
     "max" "min"
     "sum"
-    "forall" "exists" "alldifferent" "table"
+    "forall" "forAll" "exists" "alldifferent" "table"
 ))
 ;; --------------------------------------------------------- [ Types ]
 (defvar eprime-types '(
