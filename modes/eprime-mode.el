@@ -78,7 +78,8 @@
         comment-column          60
         comment-multi-line      nil
         comment-indent-function 'java-comment-indent
-        indent-tabs-mode        t
+        indent-tabs-mode        nil
+        tab-width               4
   )
  (run-hooks 'eprime-mode-hook)
 )
