@@ -1,7 +1,8 @@
 #+Title: Emacs config
+This is my personal emacs config. It is written in org to contain notes on the packages and settings used, as well as keeping it all well organised and in an easy to read format. 
 
 * Org mode
-Organisation for all of Emacs and life. This section contains all org mode configurations and management. Have a look at [[~/.emacs.d/orguide.org][guide]] for notes and reminder on how to use Org. 
+Organisation for all of Emacs and life. This section contains all org mode configurations and management. Look at [[~/.emacs.d/orguide.org][guide]] for notes and reminder on how to use Org. 
 
 ** Install
 
@@ -65,6 +66,8 @@ Web feed reader.
 
 *** Elfeed-org
 [[https://github.com/remyhonig/elfeed-org][elfeed-org]] allows configuration of Elfeed with an Org file.
+
+**** TODO configuration in progress
 
 #+BEGIN_SRC emacs-lisp
 (use-package elfeed-org
