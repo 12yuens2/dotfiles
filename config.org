@@ -82,7 +82,7 @@ Web feed reader.
 Vim bindings in Emacs.
 
 #+BEGIN_SRC emacs-lisp
-(use-package evil
+  (use-package evil
     :ensure t
     :config (evil-mode 1))
 #+END_SRC
@@ -183,6 +183,12 @@ On the fly spell checking with aspell.
 
 #+END_SRC
 
+*** Tabs
+Tabs to spaces
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default indent-tabs-mode nil)
+#+END_SRC
 ** QoL
 Quality of life improvements.
 
