@@ -129,6 +129,17 @@ Package management with Cask
 
 * General configurations
 ** Environment variables
+
+** Key bindings
+
+*** Unbindings
+Unbind following key bindings:
+- ~C-z~ from evil-emacs-state to allow for backgrounding on the terminal
+
+#+BEGIN_SRC emacs-lisp
+(dolist (key '("\C-z"))
+  (global-unset-key key))
+#+END_SRC
    
 ** Backups
 Keep backups in a seperate directory to avoid cluttering workspace.
@@ -255,3 +266,4 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
     :mode
     ("\\.hs$" . haskell-mode))
 #+END_SRC
+

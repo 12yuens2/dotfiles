@@ -1,5 +1,4 @@
 #!/bin/bash
-export PATH=$PATH:$HOME/.cask/bin
 emacs_path=~/.emacs.d
 
 # Install Cask if not exists
@@ -8,6 +7,8 @@ if ! type cask > /dev/null; then
     curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
     cd $emacs_path/ && cask install
 fi
+
+export PATH=$PATH:$HOME/.cask/bin
 
 echo "Link main config files..."
 ln -sf $(pwd)/Cask $emacs_path/Cask
