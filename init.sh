@@ -15,7 +15,9 @@ ln -sf $(pwd)/Cask $emacs_path/Cask
 ln -sf $(pwd)/init.el $emacs_path/init.el
 ln -sf $(pwd)/config.org $emacs_path/config.org
 ln -sf $(pwd)/elfeed.org $emacs_path/elfeed.org
-ln -sf $(pwd)/orguide.org $emacs_path/orguide.org
+
+# Make directory for emacs backups
+mkdir -p $emacs_path/backups
 
 echo "Make and link directory for extra modes..."
 mode_path=$emacs_path/modes
