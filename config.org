@@ -87,6 +87,15 @@ Vim bindings in Emacs.
     :config (evil-mode 1))
 #+END_SRC
 
+** Flycheck
+On the fly syntax checking. Check [[http://www.flycheck.org/en/latest/languages.html][this]] link to get a list of supported languages. May need to install some language specific syntax checkers.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :config (global-flycheck-mode 1))
+#+END_SRC
+
 ** Ivy
 Completion mechanism for Emacs.
 
@@ -254,13 +263,6 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
                 c-default-style "linux")
 #+END_SRC
 
-** Ruby
-#+BEGIN_SRC emacs-lisp
-  (use-package enh-ruby-mode
-    :ensure t
-    :mode
-    ("\\.rb$" . enh-ruby-mode))
-#+END_SRC
    
 ** Haskell
 #+BEGIN_SRC emacs-lisp
@@ -270,3 +272,28 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
     ("\\.hs$" . haskell-mode))
 #+END_SRC
 
+
+** Rust
+#+BEGIN_SRC emacs-lisp
+  (use-package rust-mode
+    :ensure t
+    :mode
+    ("\\.rs$" . rust-mode))
+#+END_SRC
+
+** Ruby
+#+BEGIN_SRC emacs-lisp
+  (use-package enh-ruby-mode
+    :ensure t
+    :mode
+    ("\\.rb$" . enh-ruby-mode))
+#+END_SRC
+
+
+** YAML
+#+BEGIN_SRC emacs-lisp
+  (use-package yaml-mode
+    :ensure t
+    :mode
+    ("\\.yml$" . yaml-mode))
+#+END_SRC
