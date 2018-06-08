@@ -149,8 +149,8 @@ Unbind following key bindings:
 - ~C-z~ from evil-emacs-state to allow for backgrounding on the terminal
 
 #+BEGIN_SRC emacs-lisp
-(dolist (key '("\C-z"))
-  (global-unset-key key))
+  (dolist (key '("\C-z"))
+    (global-unset-key key))
 #+END_SRC
    
 ** Backups
@@ -165,8 +165,8 @@ Enable ~desktop-save~ to save Emacs sessions. The desktop is saved in ~\~/.emacs
   (use-package desktop
     :ensure t
     :init
-        (setq desktop-path '("~/.emacs.d/"))
-        (setq desktop-dirname '("~/.emacs.d/"))
+        (setq desktop-path '"~/.emacs.d/")
+        (setq desktop-dirname '"~/.emacs.d/")
         (setq desktop-base-file-name "emacs-desktop")
     :config
         (desktop-save-mode 1)
@@ -193,22 +193,28 @@ Settings for parenthesis highlighting.
 #+END_SRC
 
 *** Spell checking
-On the fly spell checking with aspell.
+On the fly spell checking with hunspell.
  
 #+BEGIN_SRC emacs-lisp
-(setq ispell-program-name "/usr/bin/hunspell")
-(setq ispell-local-dictionary "en_GB")
-(setq ispell-local-dictionary-alist
-    '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8)))
+  (defun set-ispell-path (path)
+    (setq ispell-program-name path))
 
+  ;; Condition for setting hunspell path on different OS
+  (cond ((eq system-type 'darwin) (set-ispell-path "/usr/Local/Cellar/hunspell/1.6.2/bin/hunspell"))
+        ((eq system-type 'gnu/linux) (set-ispell-path "/usr/bin/hunspell")))
+
+  (setq ispell-local-dictionary "en_GB")
+  (setq ispell-local-dictionary-alist
+      '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8)))
 #+END_SRC
 
 *** Tabs
-Tabs to spaces
+Tabs to spaces.
 
 #+BEGIN_SRC emacs-lisp
   (setq-default indent-tabs-mode nil)
 #+END_SRC
+
 ** QoL
 Quality of life improvements.
 
