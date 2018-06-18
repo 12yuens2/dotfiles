@@ -269,7 +269,6 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
                 c-default-style "linux")
 #+END_SRC
 
-   
 ** Haskell
 #+BEGIN_SRC emacs-lisp
   (use-package haskell-mode
@@ -278,13 +277,15 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
     ("\\.hs$" . haskell-mode))
 #+END_SRC
 
-
-** Rust
+** Markdown
 #+BEGIN_SRC emacs-lisp
-  (use-package rust-mode
+  (use-package markdown-mode
     :ensure t
-    :mode
-    ("\\.rs$" . rust-mode))
+    :commands (markdown-mode gfm-mode)
+    :mode (("README\\.md\\'" . gfm-mode)
+           ("\\.md\\'" . markdown-mode)
+           ("\\.markdown\\'" . markdown-mode))
+    :init (setq markdown-command "multimarkdown"))
 #+END_SRC
 
 ** Ruby
@@ -295,6 +296,13 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
     ("\\.rb$" . enh-ruby-mode))
 #+END_SRC
 
+** Rust
+#+BEGIN_SRC emacs-lisp
+  (use-package rust-mode
+    :ensure t
+    :mode
+    ("\\.rs$" . rust-mode))
+#+END_SRC
 
 ** YAML
 #+BEGIN_SRC emacs-lisp
@@ -303,3 +311,4 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
     :mode
     ("\\.yml$" . yaml-mode))
 #+END_SRC
+
