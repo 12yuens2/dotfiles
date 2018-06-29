@@ -8,6 +8,8 @@ Personal Emacs config files. Notes on all packages and configurations can be fou
 
 Python is require to install Cask.
 
+Tmux config also included in `.tmux.conf`.
+
 ## TODOs
 - elfeed configuration
 - email configuration

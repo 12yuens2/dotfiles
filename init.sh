@@ -26,4 +26,8 @@ mkdir -p $mode_path
 ln -sf $curr_dir/modes/promela-mode.el $mode_path/promela-mode.el
 ln -sf $curr_dir/modes/eprime-mode.el $mode_path/eprime-mode.el
 
+# Tmux config
+echo "Link tmux config..."
+ln -sd $curr_dir/.tmux.conf ~/.tmux.conf
+
 echo "Finished."
