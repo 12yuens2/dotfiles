@@ -87,6 +87,26 @@ Vim bindings in Emacs.
     :config (evil-mode 1))
 #+END_SRC
 
+*** Escape bindings
+Bindings to make sure that ~ESC~ actually quits everything, courtesy of [[https://stackoverflow.com/a/10166400]]
+#+BEGIN_SRC emacs-lisp
+  (defun minibuffer-keyboard-quit ()
+    "Abort recursive edit.
+  In Delete Selection mode, if the mark is active, just deactivate it;
+  then it takes a second \\[keyboard-quit] to abort the minibuffer."
+    (interactive)
+    (if (and delete-selection-mode transient-mark-mode mark-active)
+        (setq deactivate-mark  t)
+      (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+      (abort-recursive-edit)))
+  (define-key evil-normal-state-map [escape] 'keyboard-quit)
+  (define-key evil-visual-state-map [escape] 'keyboard-quit)
+  (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+#+END_SRC
 ** Flycheck
 On the fly syntax checking. Check [[http://www.flycheck.org/en/latest/languages.html][this]] link to get a list of supported languages. May need to install some language specific syntax checkers.
 
@@ -205,7 +225,10 @@ On the fly spell checking with hunspell.
 
   (setq ispell-local-dictionary "en_GB")
   (setq ispell-local-dictionary-alist
-      '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8)))
+        '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8)))
+
+  ;; Hooks for activating flyspell
+  (add-hook 'text-mode-hook 'flyspell-mode)
 #+END_SRC
 
 *** Tabs
