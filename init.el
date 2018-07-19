@@ -36,7 +36,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode markdown-mode+ yaml-mode rust-mode use-package pallet neotree ivy haskell-mode flycheck evil enh-ruby-mode elfeed company))))
+    (evil-magit evil-numbers protobuf-mode magit markdown-mode markdown-mode+ yaml-mode rust-mode use-package pallet neotree ivy haskell-mode flycheck evil enh-ruby-mode elfeed company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
