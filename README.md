@@ -3,10 +3,9 @@ Personal Emacs config files. Notes on all packages and configurations can be fou
 
 ## Usage reminder
 1. Clone repo
-2. Create `.emacs.d` in home directory if it doesn't exist
-3. Run `init.sh`
+2. Run `init.sh`
 
-Python is require to install Cask.
+Python is required to install Cask.
 
 Tmux config also included in `.tmux.conf`.
 
