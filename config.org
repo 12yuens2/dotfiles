@@ -70,10 +70,10 @@ Web feed reader.
 **** TODO configuration in progress
 
 #+BEGIN_SRC emacs-lisp
-(use-package elfeed-org
-    :ensure t
-    :config (elfeed-org)
-            (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
+;;(use-package elfeed-org
+;;    :ensure t
+;;    :config (elfeed-org)
+;;            (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
 #+END_SRC emacs-lisp
 
 *** Elfeed configuration
@@ -172,7 +172,6 @@ Tree plugin like NerdTree for Vim.
     :ensure t
     :config 
         (global-set-key (kbd "C-c f") 'neotree-toggle)
-
         (add-hook 'neotree-mode-hook
             (lambda ()
                 (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
@@ -289,7 +288,18 @@ Change "yes or no" to "y or n"
 (load-theme 'leuven t)
 #+END_SRC
 
-* Other custom modes
+** Other
+Other non categorised things
+
+*** Speed type
+Typing practice. Use ~speed-type-text~ to type random text and ~speed-type-buffer~ to type current buffer.
+
+#+BEGIN_SRC emacs-lisp
+(use-package speed-type
+    :ensure t)
+#+END_SRC
+
+* Custom modes
 Add ~modes/~ directory to load path for custom modes.
 
 #+BEGIN_SRC emacs-lisp
@@ -368,6 +378,6 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
   (use-package yaml-mode
     :ensure t
     :mode (("\\.yml$" . yaml-mode)
-           ("\\.yaml$" . taml-mode)))
+           ("\\.yaml$" . yaml-mode)))
 #+END_SRC
 
