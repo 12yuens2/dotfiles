@@ -1,5 +1,5 @@
 #+Title: Emacs config
-This is my personal emacs config. It is written in org to contain notes on the packages and settings used, as well as keeping it all well organised and in an easy to read format. 
+This is my personal emacs config. It is written in org to contain notes on the packages and settings used, as well as keeping it all well organised and in an easy to read format.
 
 * Org mode
 Organisation for all of Emacs and life. This section contains all org mode configurations and management. Look at [[~/.emacs.d/orguide.org][guide]] for notes and reminder on how to use Org. 
@@ -223,8 +223,8 @@ Unbind following key bindings:
 ** Backups
 Keep backups in a separate temporary directory to avoid cluttering workspace.
 #+BEGIN_SRC emacs-lisp
-  (setq backup-directory-alist '((".*" . ,temporary-file-directory)))
-  (setq auto-save-file-name-transforms '((".*" ,temporary-file-directory t)))
+  (setq backup-directory-alist '((".*" . "~/.emacs.d/backups")))
+  (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/backups" t)))
 #+END_SRC
 
 Automatically delete backups older than one week
@@ -232,7 +232,7 @@ Automatically delete backups older than one week
   (message "Deleting old backup files...")
   (let ((week (* 60 60 24 7))
         (current (float-time (current-time))))
-    (dolist (file (directory-files temporary-file-directory t))
+    (dolist (file (directory-files "~/.emacs.d/backups" t))
       (when (and (backup-file-name-p file)
                  (> (- current (float-time (fifth (file-attributes file))))
                     week))
