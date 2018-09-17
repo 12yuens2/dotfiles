@@ -205,6 +205,11 @@ Package management with Cask
 ** Environment variables
 
 ** Key bindings
+Custom shortcuts and bindings that are not package specific
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-l") 'visual-line-mode)
+#+END_SRC
 
 *** Unbindings
 Unbind following key bindings:
@@ -234,6 +239,7 @@ Automatically delete backups older than one week
         (message "%s" file)
         (delete-file file))))
 #+END_SRC
+
 ** Desktop save
 Enable ~desktop-save~ to save Emacs sessions. The desktop is saved in ~\~/.emacs.d/~. 
 #+BEGIN_SRC emacs-lisp

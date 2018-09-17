@@ -9,6 +9,7 @@ mode_path=$emacs_path/modes
 # Install Cask if not exists
 if ! type cask > /dev/null; then
     echo "Install cask..."
+    rm -rf ~/.cask
     curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
     cd $emacs_path/ && cask install
 fi
