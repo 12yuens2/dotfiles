@@ -331,6 +331,14 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
                 c-default-style "linux")
 #+END_SRC
 
+** Go
+#+BEGIN_SRC emacs-lisp
+  (use-package go-mode
+    :ensure t
+    :mode 
+    ("\\.go$" . go-mode))
+#+END_SRC
+
 ** Haskell
 #+BEGIN_SRC emacs-lisp
   (use-package haskell-mode
@@ -354,7 +362,8 @@ Syntax highlighting for [[http://www.csplib.org/Languages/EssencePrime/][Essence
 #+BEGIN_SRC emacs-lisp
   (use-package protobuf-mode
     :ensure t
-    :mode("\\.proto" . protobuf-mode))
+    :mode
+    ("\\.proto" . protobuf-mode))
 #+END_SRC
 
 ** Ruby
