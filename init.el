@@ -4,9 +4,9 @@
 
 (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")
-			 ("gnu" . "https://elpa.gnu.org/packages/")
-			 ("popkit" . "http://elpa.popkit.org/packages") ;; For Chinese firewall
-			 ("org" . "http://orgmode.org/elpa")))
+			 ("gnu" . "https://elpa.gnu.org/packages/")))
+			 ;;("popkit" . "http://elpa.popkit.org/packages") ;; For Chinese firewall
+			 ;;("org" . "http://orgmode.org/elpa")))
 (package-initialize)
 (package-refresh-contents) ;; Refresh package contents. TODO: run conditionally
 

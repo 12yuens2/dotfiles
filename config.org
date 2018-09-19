@@ -1,5 +1,5 @@
 #+Title: Emacs config
-This is my personal emacs config. It is written in org to contain notes on the packages and settings used, as well as keeping it all well organised and in an easy to read format. 
+This is my personal emacs config. It is written in org to contain notes on the packages and settings used, as well as keeping it all well organised and in an easy to read format.
 
 * Org mode
 Organisation for all of Emacs and life. This section contains all org mode configurations and management. Look at [[~/.emacs.d/orguide.org][guide]] for notes and reminder on how to use Org. 
@@ -188,9 +188,28 @@ Package management with Cask
 #+END_SRC
 
 * General configurations
+** Custom functions
+
+*** Config file functions
+- ~config~ opens this config file
+- ~reconfig~ reloads the config by loading ~init.el~
+
+#+BEGIN_SRC emacs-lisp
+  (defun config()
+    (interactive) (find-file (expand-file-name "~/.emacs.d/config.org")))
+
+  (defun reconfig()
+    (interactive) (load-file (expand-file-name "~/.emacs.d/init.el")))
+#+END_SRC
+
 ** Environment variables
 
 ** Key bindings
+Custom shortcuts and bindings that are not package specific
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-l") 'visual-line-mode)
+#+END_SRC
 
 *** Unbindings
 Unbind following key bindings:
@@ -202,9 +221,23 @@ Unbind following key bindings:
 #+END_SRC
    
 ** Backups
-Keep backups in a seperate directory to avoid cluttering workspace.
+Keep backups in a separate temporary directory to avoid cluttering workspace.
 #+BEGIN_SRC emacs-lisp
-  (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+  (setq backup-directory-alist '((".*" . "~/.emacs.d/backups")))
+  (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/backups" t)))
+#+END_SRC
+
+Automatically delete backups older than one week
+#+BEGIN_SRC emacs-lisp
+  (message "Deleting old backup files...")
+  (let ((week (* 60 60 24 7))
+        (current (float-time (current-time))))
+    (dolist (file (directory-files "~/.emacs.d/backups" t))
+      (when (and (backup-file-name-p file)
+                 (> (- current (float-time (fifth (file-attributes file))))
+                    week))
+        (message "%s" file)
+        (delete-file file))))
 #+END_SRC
 
 ** Desktop save
@@ -213,8 +246,8 @@ Enable ~desktop-save~ to save Emacs sessions. The desktop is saved in ~\~/.emacs
   (use-package desktop
     :ensure t
     :init
-        (setq desktop-path '"~/.emacs.d/")
-        (setq desktop-dirname '"~/.emacs.d/")
+        (setq desktop-path '("~/.emacs.d/"))
+        (setq desktop-dirname "~/.emacs.d/")
         (setq desktop-base-file-name "emacs-desktop")
     :config
         (desktop-save-mode 1)

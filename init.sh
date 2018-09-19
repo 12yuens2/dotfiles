@@ -9,6 +9,7 @@ mode_path=$emacs_path/modes
 # Install Cask if not exists
 if ! type cask > /dev/null; then
     echo "Install cask..."
+    rm -rf ~/.cask
     curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
     cd $emacs_path/ && cask install
 fi
@@ -26,6 +27,6 @@ ln -sf $curr_dir/modes/eprime-mode.el $mode_path/eprime-mode.el
 
 # Tmux config
 echo "Link tmux config..."
-ln -sd $curr_dir/.tmux.conf ~/.tmux.conf
+ln -sf $curr_dir/.tmux.conf ~/.tmux.conf
 
 echo "Finished."
