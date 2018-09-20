@@ -13,7 +13,7 @@ if ! type cask > /dev/null; then
     curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
     cd $emacs_path/ && cask install
 fi
-export PATH=$PATH:$HOME/.cask/bin
+export PATH=$PATH:~/.cask/bin
 
 echo "Link main config files..."
 ln -sf $curr_dir/Cask $emacs_path/Cask
