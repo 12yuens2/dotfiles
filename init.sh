@@ -11,9 +11,9 @@ if ! type cask > /dev/null; then
     echo "Install cask..."
     rm -rf ~/.cask
     curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+    export PATH=$PATH:~/.cask/bin
     cd $emacs_path/ && cask install
 fi
-export PATH=$PATH:~/.cask/bin
 
 echo "Link main config files..."
 ln -sf $curr_dir/Cask $emacs_path/Cask
