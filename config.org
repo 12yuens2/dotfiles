@@ -41,7 +41,7 @@ All general ELPA packages used that are not in the default Emacs configuration.
 Project management for smooth packaging.
 
 #+BEGIN_SRC emacs-lisp
-(use-package cask
+  (use-package cask
     :ensure t)
 #+END_SRC
 
@@ -234,7 +234,7 @@ Automatically delete backups older than one week
         (current (float-time (current-time))))
     (dolist (file (directory-files "~/.emacs.d/backups" t))
       (when (and (backup-file-name-p file)
-                 (> (- current (float-time (fifth (file-attributes file))))
+                 (> (- current (float-time (nth 5 (file-attributes file))))
                     week))
         (message "%s" file)
         (delete-file file))))
