@@ -7,16 +7,16 @@ mkdir -p $emacs_path/{backups,modes}
 mode_path=$emacs_path/modes
 
 # Install Cask if not exists
-if ! type cask > /dev/null; then
-    echo "Install cask..."
-    rm -rf ~/.cask
-    curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
-    export PATH=$PATH:~/.cask/bin
-    cd $emacs_path/ && cask install
-fi
+#if ! type cask > /dev/null; then
+#    echo "Install cask..."
+#    rm -rf ~/.cask
+#    curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+#    export PATH=$PATH:~/.cask/bin
+#    cd $emacs_path/ && cask install
+#fi
 
 echo "Link main config files..."
-ln -sf $curr_dir/Cask $emacs_path/Cask
+#ln -sf $curr_dir/Cask $emacs_path/Cask
 ln -sf $curr_dir/init.el $emacs_path/init.el
 ln -sf $curr_dir/config.org $emacs_path/config.org
 ln -sf $curr_dir/elfeed.org $emacs_path/elfeed.org

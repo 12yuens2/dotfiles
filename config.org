@@ -2,7 +2,7 @@
 This is my personal emacs config. It is written in org to contain notes on the packages and settings used, as well as keeping it all well organised and in an easy to read format.
 
 * Org mode
-Organisation for all of Emacs and life. This section contains all org mode configurations and management. Look at [[~/.emacs.d/orguide.org][guide]] for notes and reminder on how to use Org. 
+Organisation for Emacs. This section contains all org mode configurations and management. Look at [[~/.emacs.d/orguide.org][guide]] for notes and reminder on how to use Org.
 
 ** Install
 
@@ -46,13 +46,36 @@ Project management for smooth packaging.
 #+END_SRC
 
 ** Company
-Text completion for code, like in an IDE.
+Text completion.
 
 #+BEGIN_SRC emacs-lisp
-(use-package company
-    :ensure t
-    :bind ("C-1" . company-mode)
-    :config (global-company-mode 1))
+  (use-package company
+      :after diminish
+      :diminish company-mode
+      :ensure t
+      :init
+      (add-hook 'LaTeX-mode-hook 'company-mode)
+      (add-hook 'org-mode-hook 'company-mode)
+      (add-hook 'python-mode-hook 'company-mode)
+      :config
+      (setq company-show-numbers t
+            company-minimum-prefix-length 2
+            company-idle-delay 0.1
+            company-require-match 'never
+            company-dabbrev-downcase nil
+            company-dabbrev-ignore-case nil)
+      (setq company-frontends
+        '(company-pseudo-tooltip-unless-just-one-frontend
+          company-preview-frontend
+          company-echo-metadata-frontend))
+#+END_SRC
+
+** Diminish
+Diminish mode line displays of minor modes
+
+#+BEGIN_SRC emacs-lisp
+  (use-package diminish
+    :ensure t)
 #+END_SRC
 
 ** Elfeed
@@ -134,6 +157,7 @@ Completion mechanism for Emacs.
 #+BEGIN_SRC emacs-lisp
 (use-package ivy
     :ensure t
+    :diminish (ivy-mode)
     :config (ivy-mode 1))
 #+END_SRC
 
@@ -165,7 +189,7 @@ Evil keys for magit. ~:init~ snippets sets the evil state that evil-magit will u
 #+END_SRC
 
 ** Neotree
-Tree plugin like NerdTree for Vim.
+Tree plugin like NerdTree for Vim. ~C-C f~ to toggle neotree on/off.
 
 #+BEGIN_SRC emacs-lisp
 (use-package neotree
@@ -219,7 +243,7 @@ Unbind following key bindings:
   (dolist (key '("\C-z"))
     (global-unset-key key))
 #+END_SRC
-   
+
 ** Backups
 Keep backups in a separate temporary directory to avoid cluttering workspace.
 #+BEGIN_SRC emacs-lisp
@@ -299,6 +323,28 @@ Tabs to spaces.
   (setq-default indent-tabs-mode nil)
 #+END_SRC
 
+** LaTeX
+LaTeX configuration with auctex
+
+#+BEGIN_SRC emacs-lisp
+  ;;(use-package auctex-latexmk
+  ;;  :ensure t
+  ;;  :init
+  ;;  (auctex-latexmk-setup)
+  ;;  (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+  ;;  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  ;;  (add-hook 'LaTeX-mode-hook 'LaTeX-mode-mode)
+  ;;  :config
+  ;;  (setq TeX-auto-save t)
+  ;;  (setq TeX-parse-self t)
+
+  ;;  ;; Make auctex aware of multi-file documents
+  ;;  (setq-default TeX-master nil)
+
+  ;;  ;; Jump to source
+  ;;  (setq TeX-source-correlate-mode t)
+
+#+END_SRC
 ** QoL
 Quality of life improvements.
 
@@ -333,7 +379,7 @@ Typing practice. Use ~speed-type-text~ to type random text and ~speed-type-buffe
 #+END_SRC
 
 * Custom modes
-Add ~modes/~ directory to load path for custom modes.
+Modes for languages/syntax not found in package archives. Add ~modes/~ directory to load path for custom modes.
 
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'load-path "~/.emacs.d/modes")

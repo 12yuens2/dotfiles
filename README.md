@@ -10,6 +10,7 @@ Python is required to install Cask.
 Tmux config also included in `.tmux.conf`.
 
 ## TODOs
-- elfeed configuration
-- email configuration
-- more organisation with org agenda
+- [ ] LaTeX configuration
+- [ ] elfeed configuration
+- [ ] email configuration
+- [ ] more organisation with org agenda

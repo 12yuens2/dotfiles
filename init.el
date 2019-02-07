@@ -19,8 +19,8 @@
 (eval-when-compile
   (require 'use-package))
 
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
+;;(require 'cask "~/.cask/cask.el")
+;;(cask-initialize)
 
 ;; Load org config
 (org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
@@ -38,7 +38,7 @@
     ("c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" default)))
  '(package-selected-packages
    (quote
-    (color-theme-monokai monokai-theme speed-type evil-magit evil-numbers protobuf-mode magit markdown-mode markdown-mode+ yaml-mode rust-mode use-package pallet neotree ivy haskell-mode flycheck evil enh-ruby-mode elfeed company))))
+    (diminish gradle-mode color-theme-monokai monokai-theme speed-type evil-magit evil-numbers protobuf-mode magit markdown-mode markdown-mode+ yaml-mode rust-mode use-package pallet neotree ivy haskell-mode flycheck evil enh-ruby-mode elfeed company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
