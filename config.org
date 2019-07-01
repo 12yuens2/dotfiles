@@ -41,33 +41,33 @@ All general ELPA packages used that are not in the default Emacs configuration.
 Project management for smooth packaging.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package cask
-    :ensure t)
+;;  (use-package cask
+;;    :ensure t)
 #+END_SRC
 
 ** Company
 Text completion.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package company
-      :after diminish
-      :diminish company-mode
-      :ensure t
-      :init
-      (add-hook 'LaTeX-mode-hook 'company-mode)
-      (add-hook 'org-mode-hook 'company-mode)
-      (add-hook 'python-mode-hook 'company-mode)
-      :config
-      (setq company-show-numbers t
-            company-minimum-prefix-length 2
-            company-idle-delay 0.1
-            company-require-match 'never
-            company-dabbrev-downcase nil
-            company-dabbrev-ignore-case nil)
-      (setq company-frontends
-        '(company-pseudo-tooltip-unless-just-one-frontend
-          company-preview-frontend
-          company-echo-metadata-frontend))
+;;  (use-package company
+;;      :after diminish
+;;      :diminish company-mode
+;;      :ensure t
+;;      :init
+;;      (add-hook 'LaTeX-mode-hook 'company-mode)
+;;      (add-hook 'org-mode-hook 'company-mode)
+;;      (add-hook 'python-mode-hook 'company-mode)
+;;      :config
+;;      (setq company-show-numbers t
+;;            company-minimum-prefix-length 2
+;;            company-idle-delay 0.1
+;;            company-require-match 'never
+;;            company-dabbrev-downcase nil
+;;            company-dabbrev-ignore-case nil)
+;;      (setq company-frontends
+;;        '(company-pseudo-tooltip-unless-just-one-frontend
+;;          company-preview-frontend
+;;          company-echo-metadata-frontend))
 #+END_SRC
 
 ** Diminish
@@ -218,12 +218,29 @@ Package management with Cask
 - ~config~ opens this config file
 - ~reconfig~ reloads the config by loading ~init.el~
 
-#+BEGIN_SRC emacs-lisp
   (defun config()
+#+BEGIN_SRC emacs-lisp
     (interactive) (find-file (expand-file-name "~/.emacs.d/config.org")))
 
   (defun reconfig()
     (interactive) (load-file (expand-file-name "~/.emacs.d/init.el")))
+#+END_SRC
+
+
+*** Eww image toggle
+Toggle images on/off in eww
+
+#+BEGIN_SRC emacs-lisp
+  (defun eww-toggle-images ()
+    "Toggle whether images are loaded on the page, then reload the page"
+    (interactive)
+    (setq-local shr-inhibit-images (not shr-inhibit-images))
+    (eww-reload t)
+    (message "Images are now %s"
+             (if shr-inhibit-images "off" "on")))
+
+  (define-key eww-mode-map (kbd "C-x t") 'eww-toggle-images)
+  (define-key eww-link-keymap (kbd "C-x t") 'eww-toggle-images)
 #+END_SRC
 
 ** Environment variables
