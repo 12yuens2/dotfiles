@@ -218,8 +218,8 @@ Package management with Cask
 - ~config~ opens this config file
 - ~reconfig~ reloads the config by loading ~init.el~
 
-  (defun config()
 #+BEGIN_SRC emacs-lisp
+  (defun open-config()
     (interactive) (find-file (expand-file-name "~/.emacs.d/config.org")))
 
   (defun reconfig()
