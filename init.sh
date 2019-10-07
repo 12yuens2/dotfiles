@@ -27,6 +27,11 @@ ln -sf $curr_dir/modes/eprime-mode.el $mode_path/eprime-mode.el
 
 # Tmux config
 echo "Link tmux config..."
-ln -sf $curr_dir/.tmux.conf ~/.tmux.conf
+ln -sf $curr_dir/tmux.conf ~/.tmux.conf
+
+# SSH config
+echo "Link ssh config..."
+mkdir -p ~/.ssh
+ln -sf $curr_dir/ssh_config ~/.ssh/config
 
 echo "Finished."
