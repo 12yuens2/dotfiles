@@ -10,3 +10,6 @@ Host iridis4c
     HostName iridis4_c.soton.ac.uk
     User sy6u19
     IdentityFile ~/.ssh/iridis.key 
+Host office
+    HostName uos-218080.clients.soton.ac.uk
+    User sy6u19
