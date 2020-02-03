@@ -18,4 +18,5 @@ Host office
 Host school
     HostName ssh.soton.ac.uk
     User sy6u19
-    IdentityFile ~/.ssh/id_rsa.key
+    IdentityFile ~/.ssh/school.key
+
